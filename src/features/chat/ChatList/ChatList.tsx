@@ -1,0 +1,68 @@
+import Box from '@mui/material/Box';
+
+export function ChatList()
+{
+  return(
+    <Box  sx={{height:"400px", overflowY:"auto", width:"80%"}}>
+        "fsdfsd"
+        <br/>
+        dsadas
+        <br/>
+        dsadas
+        <br/>
+        das
+        <br/>
+        dasssssssssssfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        <br/>
+        fffffffffffff
+        <br/>
+        fffffffffffff
+        <br/>
+        fggg
+          <br/>
+        dsadas
+        <br/>
+        dsadas
+        <br/>
+        das
+        <br/>
+        dasssssssssss
+        <br/>
+        fffffffffffff
+        <br/>
+        fffffffffffff
+        <br/>
+        fggg
+           "fsdfsd"
+        <br/>
+        dsadas
+        <br/>
+        dsadas
+        <br/>
+        das
+        <br/>
+        dasssssssssssfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        <br/>
+        fffffffffffff
+        <br/>
+        fffffffffffff
+        <br/>
+        fggg
+          <br/>
+        dsadas
+        <br/>
+        dsadas
+        <br/>
+        das
+        <br/>
+        dasssssssssss
+        <br/>
+        fffffffffffff
+        <br/>
+        fffffffffffff
+        <br/>
+        fggg
+    </Box>
+  
+)
+}
