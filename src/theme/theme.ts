@@ -20,6 +20,7 @@ export const theme=createTheme(
         default: "#f4ecec",
         paper: "#dcf6d6",
       }
+      
   }
 
 })

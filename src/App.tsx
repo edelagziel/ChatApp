@@ -9,6 +9,7 @@ import {ProtectedRoutes} from "./routes/ProtectedRoutes"
 import {LoginPage} from "./features/auth/loginPage/loginPage"
 import { Register } from "./features/auth/registerPage/RegisterPage";
 import Box from '@mui/material/Box';
+import {MsgPage} from "./features/msg/msgPage"
 export function App()
 {
   return(
@@ -18,8 +19,9 @@ export function App()
     <Routes>
       <Route  element={<ProtectedRoutes/>}>
         <Route path="/home" element={<ChatPage pageName="friends & Groups"></ChatPage>}></Route>
-        <Route path="Grope" element={<ChatPage pageName="Groups"></ChatPage>}></Route>
-        <Route path="friends" element={<ChatPage pageName="friends"></ChatPage>}></Route>
+        <Route path="/Grope" element={<ChatPage pageName="Groups"></ChatPage>}></Route>
+        <Route path="/friends" element={<ChatPage pageName="friends"></ChatPage>}></Route>
+        <Route path="/chat/:id" element={<MsgPage></MsgPage>}></Route>
       </Route>
       <Route element={<PublicRoutes/>}>
         <Route path="/" element={<LoginPage/>}></Route>

@@ -2,6 +2,8 @@ import { ChatList } from "./ChatList/ChatList"
 import { Box } from "@mui/system";
 import {SearchBar} from "../../components/SearchBar/SearchBar"
 import {ButtonShow} from "./ChatList/ButtonShow.utils"
+
+
 export function ChatPage({pageName}:{pageName:string})
 {
   return(

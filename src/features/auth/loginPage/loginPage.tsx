@@ -6,9 +6,9 @@ export function LoginPage()
 {
   return(
     <Container  maxWidth ="md" sx={{mt:10}} >
-  <Typography variant='h3' sx={{textAlign:'center'}}>login page</Typography>
+    <Typography variant='h3' sx={{textAlign:'center'}}>login page</Typography>
     <LoginForm></LoginForm>
-  </Container>
+    </Container>
 
   );
 }
