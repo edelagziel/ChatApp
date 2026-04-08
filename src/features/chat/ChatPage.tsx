@@ -16,13 +16,21 @@ export function ChatPage({pageName}:{pageName:string})
 {
   const {Chats}=useChats()
   const [isAddFriendOpen, setIsAddFriendOpen]=useState(false)
+  const filteredChats= Chats.filter((chat)=>{
+  if(pageName==="friends & Groups") return true;
+  if(pageName==="Groups") return chat.isGroup
+  if(pageName==="friends") return !chat.isGroup
+   return true
+  })
+
+
+
   return(
     <>
-    <Box gap={8} sx={{display:"flex" ,flexDirection:"column",alignItems:"center"}}>
-        <h1>{`In this page you can see ${pageName}`}</h1>
+    <Box mt={8} gap={8} sx={{display:"flex" ,flexDirection:"column",alignItems:"center"}}>
         <SearchBar/>
-        <ChatList Chats={Chats}/>
-       <ButtonShow/>
+        <ChatList Chats={filteredChats}/>
+       <ButtonShow pageName={pageName}/>
     </Box>
     <AddFriendModal isOpen={isAddFriendOpen} onClose={()=>setIsAddFriendOpen(false)}></AddFriendModal>
     </>
