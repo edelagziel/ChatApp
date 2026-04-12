@@ -19,7 +19,7 @@ export function useChats()
     return response
     }
       fetchData();
-  },[id])
+  },[id,SetChats])
 
   return {Chats}
 

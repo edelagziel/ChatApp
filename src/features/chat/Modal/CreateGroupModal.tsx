@@ -6,7 +6,9 @@ import { Typography } from '@mui/material';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-
+import { createGroup } from "../chat.service";
+import { useSelector } from "react-redux";
+import Box from '@mui/material/Box'
 
 type CreateGroupModalProps=
 {
@@ -22,23 +24,46 @@ export function CreateGroupModal({isOpen,onClose}:CreateGroupModalProps)
 {
   const [emails, setEmails] = useState<string[]>(['']);
   const [GroupName,setGroupName]=useState('');
-  const [error,setError]=useState("");
+  const [errors,setError]=useState("");
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-async function handleLogin() 
-{
- if (emails.length<1 || !GroupName ) {
-  setError("Please fill the fields");
-  return;
-}
-  try{
-    setError('');
-    // const response= await ServerReqwest(email)
+  const userId = useSelector((state:any)=>state.auth.id);
+
+
+async function handleGroup() {
+  if (!GroupName || emails.some(e => !e)) {
+    setError("Please fill all fields");
+    return;
   }
-  catch(err:any)
+
+
+  try {
+    setError('');
+    setLoading(true);
+    const response = await createGroup(GroupName, emails, userId);
+
+    console.log(response);
+
+    setSuccess(true)
+  setTimeout(() => 
   {
+    onClose();
+    setEmails(['']);
+    setGroupName('');
+    setError('');
+    setSuccess(false);
+  }, 2000);  
+   
+
+
+  } catch (err: any) {
     setError(err.response?.data?.message || 'Something went wrong');
   }
-} 
+  finally {
+    setLoading(false);
+  }
+}
 
 
 
@@ -64,14 +89,14 @@ async function handleLogin()
         </div>
         )}
 
-
-
     </DialogContent>
 
     <DialogActions>
-        <Button   size='large' onClick={()=>setEmails([...emails,''])}>+ Add Email</Button>
-        <Button size='large'>create Group</Button>
-        <Button  size='large' onClick={onClose}>Close</Button>
+        <Button size='large' onClick={()=>setEmails([...emails,''])}>+ Add Email</Button>
+        <Button size='large' onClick={handleGroup} disabled={loading}>{loading ? "Creating..." : "Create Group"}</Button>
+        <Button size='large' onClick={onClose}>Close</Button>
+        {errors && (<Box sx={{ color: "red", fontSize: 14 }}> {errors}</Box>)}       
+       {success && (<Box sx={{ color: "green", fontSize: 18, textAlign: "center"}}> {"user hs bean created"}</Box>)}
     </DialogActions>
     </Dialog>
   )
