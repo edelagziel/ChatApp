@@ -14,13 +14,13 @@ type CreateGroupModalProps=
 {
   isOpen:boolean
   onClose: () => void;
-
+  SetChats: React.Dispatch<React.SetStateAction<any[]>>
 }
 
 
 
 
-export function CreateGroupModal({isOpen,onClose}:CreateGroupModalProps)
+export function CreateGroupModal({isOpen,onClose,SetChats}:CreateGroupModalProps)
 {
   const [emails, setEmails] = useState<string[]>(['']);
   const [GroupName,setGroupName]=useState('');
@@ -44,7 +44,7 @@ async function handleGroup() {
     const response = await createGroup(GroupName, emails, userId);
 
     console.log(response);
-
+    SetChats((prev) => [...prev, response.data]);
     setSuccess(true)
   setTimeout(() => 
   {

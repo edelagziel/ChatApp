@@ -12,9 +12,10 @@ import { useSelector } from "react-redux";
 type AddFriendModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  SetChats: React.Dispatch<React.SetStateAction<any[]>>
 };
 
-export function AddFriendModal({ isOpen, onClose }: AddFriendModalProps) {
+export function AddFriendModal({ isOpen, onClose,SetChats }: AddFriendModalProps) {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
@@ -32,7 +33,7 @@ export function AddFriendModal({ isOpen, onClose }: AddFriendModalProps) {
       setLoading(true);
       const response = await addFriend(email, userId);
       console.log(response);
-
+      SetChats((prev) => [...prev, response.data]);
       setSuccess(true);
       setTimeout(() => {
         onClose();

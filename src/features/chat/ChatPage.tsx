@@ -16,7 +16,7 @@ import { useEffect } from "react";
 
 export function ChatPage({pageName}:{pageName:string})
 {
-  const {Chats}=useChats()
+  const { Chats, SetChats } = useChats();
   const [isAddFriendOpen, setIsAddFriendOpen]=useState(false)
   const [isNewGroupOpen, setIsNewGroupOpen]=useState(false)
   const filteredChats= Chats.filter((chat)=>{
@@ -38,8 +38,8 @@ export function ChatPage({pageName}:{pageName:string})
         <ChatList Chats={filteredChats}/>
        <ButtonShow pageName={pageName}  onOpenAddFriend={()=>setIsAddFriendOpen(true)} onCreateGroup={()=>setIsNewGroupOpen(true)}  />
     </Box>
-    <AddFriendModal isOpen={isAddFriendOpen} onClose={()=>setIsAddFriendOpen(false)}></AddFriendModal>
-    <CreateGroupModal isOpen={isNewGroupOpen} onClose={()=>setIsNewGroupOpen(false)}></CreateGroupModal>
+    <AddFriendModal isOpen={isAddFriendOpen} SetChats={SetChats} onClose={()=>setIsAddFriendOpen(false)} ></AddFriendModal>
+    <CreateGroupModal isOpen={isNewGroupOpen}  SetChats={SetChats} onClose={()=>setIsNewGroupOpen(false)}></CreateGroupModal>
     </>
 
   );

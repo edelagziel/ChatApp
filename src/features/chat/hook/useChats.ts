@@ -19,9 +19,9 @@ export function useChats()
     return response
     }
       fetchData();
-  },[id,SetChats])
+  },[id])
 
-  return {Chats}
+  return { Chats, SetChats };
 
 }
 
